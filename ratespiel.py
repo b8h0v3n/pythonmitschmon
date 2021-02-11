@@ -102,11 +102,7 @@ def ratespiel():
 
 ratespiel()
 
-def randomShit():
-    frage = input("Funktioniert GitHub ?")
 
-
-randomShit()
 
 
 
