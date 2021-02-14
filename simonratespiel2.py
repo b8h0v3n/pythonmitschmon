@@ -25,24 +25,18 @@ def answerdef(lower, upper):
     while istZahl(answer) == False:
         print("Das ist keine Zahl !")
         answer = input(f"Errate die Zahl zwischen {lower} und {upper}: ")
-    return answer
+    return int(answer)
 
 
-def hint(answer, gesucht):
+def hint(answer, gesucht, lower, upper):
     while answer != gesucht:
         if answer < gesucht:
-            try:
-                answer = int(input(f"die gesuchte Zahl ist größer {answer}\n"))
-            except ValueError:
-                answer = int(
-                    input(f"die gesuchte Zahl! ist größer {answer}\n"))
+            print(f"die gesuchte Zahl! ist größer {answer}\n")
+            answer = answerdef(lower, upper)
         elif answer > gesucht:
-            try:
-                answer = int(
-                    input(f"die gesuchte Zahl ist kleiner {answer}\n"))
-            except ValueError:
-                answer = int(
-                    input(f"die gesuchte Zahl! ist kleiner {answer}\n"))
+            print(f"Die gesuchte Zahl ist kleiner als {answer}\n")
+            answer = answerdef(lower, upper)
+
     if answer == gesucht:
         print(
             f"Herzlichen glückwunsch du hast die gesuchte Zahl {gesucht} gefunden!")
@@ -72,7 +66,7 @@ def main(lower, upper, answer):
     upper = int(oben())
     gesucht = int(randomNumber(lower, upper))
     answer = int(answerdef(lower, upper))
-    hint(answer, gesucht)
+    hint(answer, gesucht, lower, upper)
 
 
 main(lower, upper, answer)
