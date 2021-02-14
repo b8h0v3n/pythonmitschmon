@@ -21,12 +21,10 @@ def randomNumber(lower, upper):
 
 
 def answerdef(lower, upper):
-    try:
-        answer = int(
-            input(f"errate die Zahl in der Grenze {lower} und {upper}:\n"))
-    except ValueError:
-        answer = int(
-            input(f"errate die Zahl! in der Grenze {lower} und {upper}:\n"))
+    answer = input(f"Errate die Zahl zwischen {lower} und {upper}: ")
+    while istZahl(answer) == False:
+        print("Das ist keine Zahl !")
+        answer = input(f"Errate die Zahl zwischen {lower} und {upper}: ")
     return answer
 
 
@@ -60,17 +58,18 @@ def unten():
 
 
 def oben():
-    upper = input("Bitte eine untere Grenze festlegen: ")
+    upper = input("Bitte eine obere Grenze festlegen: ")
     while istZahl(upper) == False:
         print("Das ist keine Zahl !")
-        upper = input("Bitte eine untere Grenze festlegen: ")
+        upper = input("Bitte eine obere Grenze festlegen: ")
     print(upper)
     return upper
 
 
 def main(lower, upper, answer):
     lower = int(unten())
-    upper = int(oben())     #wenn man das int(x) entfernt funktioniert das programm nicht
+    # wenn man das int(x) entfernt funktioniert das programm nicht
+    upper = int(oben())
     gesucht = int(randomNumber(lower, upper))
     answer = int(answerdef(lower, upper))
     hint(answer, gesucht)
